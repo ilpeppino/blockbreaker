@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour {
 
-    [SerializeField] float minX = 1f;
-    [SerializeField] float maxX = 15f;
+    [SerializeField] float minore = 1f;
+    [SerializeField] float maggiore = 15f;
     [SerializeField] float screenWidthInUnits = 16f;
 
 
@@ -22,43 +22,30 @@ public class Paddle : MonoBehaviour {
 
         // Vector 2 defines the position of the object
 
-        
+        Debug.Log("BEFORE --- Mouse " + mousePosInUnits + " ABS " + Input.mousePosition.x);
 
         Vector2 paddlePos = new Vector2();
 
-
-        if (mousePosInUnits < minX)
+        /*
+        if (mousePosInUnits < minore)
         {
-            mousePosInUnits = minX;
+            mousePosInUnits = minore;
         }
-        else if (mousePosInUnits > maxX)
+        else if (mousePosInUnits > maggiore)
         {
-            mousePosInUnits = maxX;
+            mousePosInUnits = maggiore;
         }
+        */
+
+        Debug.Log("AFTER --- Mouse " + mousePosInUnits + " ABS " + Input.mousePosition.x);
 
 
-        paddlePos.x = mousePosInUnits;
-        // paddlePos.x = Mathf.Clamp(mousePosInUnits, minX, maxX);
+
+        // paddlePos.x = mousePosInUnits;
+        paddlePos.x = Mathf.Clamp(mousePosInUnits, minore, maggiore);
         paddlePos.y = transform.position.y;
 
-        Debug.Log("BEFORE --- Mouse " + mousePosInUnits + " PX " + paddlePos.x);
 
-        
-
-        /* 
-        if (paddlePos.x < minX)
-        {
-            paddlePos.x = minX;
-        }
-        else if (paddlePos.x > maxX)
-        {
-            paddlePos.x = maxX;
-        } 
-
-        
-
-        Debug.Log("AFTER --- Mouse " + mousePosInUnits + " PX " + paddlePos.x);
-        */
 
 
         // transform is connected to the transform settings of the object in Unity, and tells to move to the specified position 
