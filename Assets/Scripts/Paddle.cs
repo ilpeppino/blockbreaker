@@ -20,12 +20,14 @@ public class Paddle : MonoBehaviour {
     {
         float mousePosInUnits = Input.mousePosition.x / Screen.width * screenWidthInUnits;
 
-        // Vector 2 defines the position of the object
-
-        Debug.Log("BEFORE --- Mouse " + mousePosInUnits + " ABS " + Input.mousePosition.x);
-
         Vector2 paddlePos = new Vector2();
+        paddlePos.x = Mathf.Clamp(mousePosInUnits, minore, maggiore);
+        paddlePos.y = transform.position.y;
 
+        transform.position = paddlePos;
+
+        // Vector 2 defines the position of the object
+        // Debug.Log("BEFORE --- Mouse " + mousePosInUnits + " ABS " + Input.mousePosition.x);
         /*
         if (mousePosInUnits < minore)
         {
@@ -36,19 +38,16 @@ public class Paddle : MonoBehaviour {
             mousePosInUnits = maggiore;
         }
         */
-
-        Debug.Log("AFTER --- Mouse " + mousePosInUnits + " ABS " + Input.mousePosition.x);
-
-
-
+        // Debug.Log("AFTER --- Mouse " + mousePosInUnits + " ABS " + Input.mousePosition.x);
         // paddlePos.x = mousePosInUnits;
-        paddlePos.x = Mathf.Clamp(mousePosInUnits, minore, maggiore);
-        paddlePos.y = transform.position.y;
+
+
+
 
 
 
 
         // transform is connected to the transform settings of the object in Unity, and tells to move to the specified position 
-        transform.position = paddlePos;
+
     }
 }
