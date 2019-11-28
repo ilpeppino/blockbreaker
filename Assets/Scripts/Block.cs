@@ -19,6 +19,7 @@ public class Block : MonoBehaviour
         AudioSource.PlayClipAtPoint(breakSound, Camera.current.transform.position);
         Destroy(gameObject);
         level.BlockDestroyed();
+        FindObjectOfType<GameStatus>().AddToScore();
     }
 
     // Start is called before the first frame update
